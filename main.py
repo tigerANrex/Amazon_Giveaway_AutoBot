@@ -23,3 +23,14 @@ for items in item_list:
 
     # lose_text = soup.findAll("span", {"class": "a-size-base-plus a-color-secondary qa-giveaway-result-text a-text-bold"})[0]
     # print(lose_text)
+
+
+###Avery's code
+
+items = soup.findAll("li", {"class": "a-section a-spacing-base listing-item"})
+for i in items:
+    requirement = str(i.find('span',{"class": "a-text-bold"}))[26:-7]
+    print(requirement)
+    #if  is in requirement:
+     #   href = i.get('href')
+      #  print(href)
