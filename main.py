@@ -21,8 +21,9 @@ item_list = soup.findAll("a", {"class": "a-link-normal item-link"})
 # print(item_list[0].get('href'))
 for items in item_list:
     item_link = "".join((amazon_url, items.get('href')))
-    r2 = requests.get(item_link)
-    soup2 = BeautifulSoup(r2.text, 'html.parser')
-    print(r2.url)
+    print(item_link)
+    # r2 = requests.get(item_link)
+    # soup2 = BeautifulSoup(r2.text, 'html.parser')
+    # print(r2.url)
     # lose_text = soup.findAll("span", {"class": "a-size-base-plus a-color-secondary qa-giveaway-result-text a-text-bold"})[0]
     # print(lose_text)
