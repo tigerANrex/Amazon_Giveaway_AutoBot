@@ -21,8 +21,8 @@ soup = BeautifulSoup(browser.page_source, 'html.parser')
 
 giveaway_href = soup.findAll("a", {"class": "a-button-text bxc-button-text"})[0].get('href')
 giveaway_link = "".join((amazon_url, giveaway_href))
-soup.decompose()
 
+soup.decompose()
 browser.get(giveaway_link)
 time.sleep(2)
 soup = BeautifulSoup(browser.page_source, "html.parser")
