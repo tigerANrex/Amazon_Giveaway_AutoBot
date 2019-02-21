@@ -11,7 +11,7 @@ url = "https://www.amazon.com/giveaways"
 browser = webdriver.Chrome()
 '''
 browser.get(amazon_login)                                                       # Login to Amazon
-while(True):
+while(True): # Waits till the page is loaded (this is because the site is coded in react)
     try:
         wait = WebDriverWait(browser, 5).until(EC.title_is("Your Account"))
         break
@@ -28,7 +28,7 @@ soup.decompose()
 browser.get(giveaway_link) # Goes to givwaway page
 while(True):
     try: # Waits till the page is loaded (this is because the site is coded in react)
-        wait = WebDriverWait(browser, 1).until(EC.title_is("Amazon Giveaways"))
+        wait = WebDriverWait(browser, 5).until(EC.title_is("Amazon Giveaways"))
         break
     except Exception as e:
         pass
@@ -45,3 +45,5 @@ for i in items:
         print("video: " + item_link)
 
 #def No_ent():
+
+#def video():
