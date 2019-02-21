@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+import pyautogui
 
 amazon_url = "https://www.amazon.com"
 amazon_login = "https://www.amazon.com/gp/sign-in.html"
@@ -27,7 +28,7 @@ giveaway_link = "".join((amazon_url, giveaway_href))
 soup.decompose()
 browser.get(giveaway_link) # Goes to givwaway page
 while(True):
-    try: # Waits till the page is loaded (this is because the site is coded in react)
+    try: # Waits till the page loads (this is because the site is coded in react)
         wait = WebDriverWait(browser, 5).until(EC.title_is("Amazon Giveaways"))
         break
     except Exception as e:
