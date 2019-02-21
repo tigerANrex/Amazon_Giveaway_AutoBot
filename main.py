@@ -9,6 +9,7 @@ amazon_url = "https://www.amazon.com"
 amazon_login = "https://www.amazon.com/gp/sign-in.html"
 url = "https://www.amazon.com/giveaways"
 browser = webdriver.Chrome()
+'''
 browser.get(amazon_login)                                                       # Login to Amazon
 while(True):
     try:
@@ -16,7 +17,7 @@ while(True):
         break
     except Exception as e:
         pass
-
+'''
 browser.get(url)
 soup = BeautifulSoup(browser.page_source, 'html.parser')
 
@@ -42,3 +43,5 @@ for i in items:
     elif requirement == "Watch a short video":
         item_link = "".join((amazon_url, i.get('href')))
         print("video: " + item_link)
+
+#def No_ent():
