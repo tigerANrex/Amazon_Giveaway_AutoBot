@@ -9,13 +9,13 @@ amazon_url = "https://www.amazon.com"
 amazon_login = "https://www.amazon.com/gp/sign-in.html"
 url = "https://www.amazon.com/giveaways"
 browser = webdriver.Chrome()
-# browser.get(amazon_login)                                                       # Login to Amazon
-# while(True):
-#     try:
-#         wait = WebDriverWait(browser, 5).until(EC.title_is("Your Account"))
-#         break
-#     except Exception as e:
-#         pass
+browser.get(amazon_login)                                                       # Login to Amazon
+while(True):
+    try:
+        wait = WebDriverWait(browser, 5).until(EC.title_is("Your Account"))
+        break
+    except Exception as e:
+        pass
 
 browser.get(url)
 soup = BeautifulSoup(browser.page_source, 'html.parser')
@@ -30,7 +30,7 @@ while(True):
         wait = WebDriverWait(browser, 1).until(EC.title_is("Amazon Giveaways"))
         break
     except Exception as e:
-        pass 
+        pass
 soup = BeautifulSoup(browser.page_source, "html.parser")
 
 items = soup.findAll("a", {"class": "a-link-normal item-link"}) # Looks for the sepreate giveaways
