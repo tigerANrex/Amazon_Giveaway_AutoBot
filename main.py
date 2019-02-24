@@ -4,13 +4,13 @@ from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-import pyautogui
+import time
 
 amazon_url = "https://www.amazon.com"
 amazon_login = "https://www.amazon.com/gp/sign-in.html"
 url = "https://www.amazon.com/giveaways"
 browser = webdriver.Chrome()
-'''
+
 browser.get(amazon_login)                                                       # Login to Amazon
 while(True): # Waits till the page is loaded (this is because the site is coded in react)
     try:
@@ -18,7 +18,7 @@ while(True): # Waits till the page is loaded (this is because the site is coded 
         break
     except Exception as e:
         pass
-'''
+
 browser.get(url)
 soup = BeautifulSoup(browser.page_source, 'html.parser')
 
@@ -40,11 +40,14 @@ for i in items:
     requirement = str(i.find('span',{"class": "a-text-bold"}))[26:-7]
     if requirement == "No entry requirement":
         item_link = "".join((amazon_url, i.get('href')))
-        print("No video: " + item_link)
+        No_ent(item_link)
     elif requirement == "Watch a short video":
         item_link = "".join((amazon_url, i.get('href')))
         print("video: " + item_link)
 
-#def No_ent():
-
+print(browser.get_window_rect())
+def No_ent(url):
+    browser.get(url)
+    time.sleep(5)
+    browser.find_element_by_id("box_click_target").click()
 #def video():
