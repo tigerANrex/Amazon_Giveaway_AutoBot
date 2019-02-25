@@ -4,13 +4,15 @@ from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+import time
 
 amazon_url = "https://www.amazon.com"
 amazon_login = "https://www.amazon.com/gp/sign-in.html"
 url = "https://www.amazon.com/giveaways"
 browser = webdriver.Chrome()
+
 browser.get(amazon_login)                                                       # Login to Amazon
-while(True):
+while(True): # Waits till the page is loaded (this is because the site is coded in react)
     try:
         wait = WebDriverWait(browser, 5).until(EC.title_is("Your Account"))
         break
@@ -26,8 +28,8 @@ giveaway_link = "".join((amazon_url, giveaway_href))
 soup.decompose()
 browser.get(giveaway_link) # Goes to givwaway page
 while(True):
-    try: # Waits till the page is loaded (this is because the site is coded in react)
-        wait = WebDriverWait(browser, 1).until(EC.title_is("Amazon Giveaways"))
+    try: # Waits till the page loads (this is because the site is coded in react)
+        wait = WebDriverWait(browser, 5).until(EC.title_is("Amazon Giveaways"))
         break
     except Exception as e:
         pass
@@ -38,7 +40,14 @@ for i in items:
     requirement = str(i.find('span',{"class": "a-text-bold"}))[26:-7]
     if requirement == "No entry requirement":
         item_link = "".join((amazon_url, i.get('href')))
-        print("No video: " + item_link)
+        No_ent(item_link)
     elif requirement == "Watch a short video":
         item_link = "".join((amazon_url, i.get('href')))
         print("video: " + item_link)
+
+print(browser.get_window_rect())
+def No_ent(url):
+    browser.get(url)
+    time.sleep(5)
+    browser.find_element_by_id("box_click_target").click()
+#def video():
