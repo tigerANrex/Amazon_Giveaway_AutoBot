@@ -1,8 +1,5 @@
 # Get free Shit from amazon bot
 
 #### Dependencies
-- scrot
+- Python3
 - selenium
-- pyautogui
-- pillow
-- beautifulsoup
